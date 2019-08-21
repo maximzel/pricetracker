@@ -1,0 +1,86 @@
+{% extends 'base/base.html' %}
+{% block content %}
+
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-lg-3">
+
+        {% include "base/menu.html" %}
+
+      </div>
+      <!-- /.col-lg-3 -->
+
+      <div class="col-lg-9">
+      <form action="{% url 'search' %}" method="GET">
+            <div class="input-group mb-3 mt-4">
+              <input type="text" name="q" class="form-control" placeholder="Введите название товара или его полный url..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
+              </div>
+            </div>
+      </form>
+        <div class="row mt-4">
+
+            {% for product in products_list %}
+              <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                <div class="item-buttons">
+                    <a class="btn btn-outline-success my-2 my-sm-0" href="{{ product.original_url }}" target="_blank"><img class="img_in_button" src="/media/{{ product.market.picture }}" alt=""></a>
+                </div>
+                  <a class="card_item_text" href="{% url 'product' product_id=product.id %}">
+                  {% if product.available == True %}
+                      <img class="card-img-top" src="/media{{ product.picture }}" alt="">
+                  {% elif product.available == False %}
+                      <div class="no-available-container">
+                      <img class="card-img-top" src="/media{{ product.picture }}" alt="">
+                      <img class="no-available-picture" src="/media/img/not_available.png" alt="">
+                      </div>
+                  {% endif %}
+                  </a>
+                  <div class="card-body" style="margin-top:150px;">
+                    <h5>{{ product.price }}</h5>
+                    <p class="card-text"><a href="{% url 'product' product_id=product.id %}">{{ product.name }}</a></p>
+                  </div>
+                  <div class="card-footer">
+                    <p class="card-text">{{ product.rubric }}</p>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+
+            <div class="pagination">
+                <span class="step-links">
+                    {% if products_list.has_previous %}
+                        <a href="?page=1">&laquo; first</a>
+                        <a href="?page={{ products_list.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">previous</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ products_list.number }} of {{ products_list.paginator.num_pages }}.
+                    </span>
+
+                    {% if products_list.has_next %}
+                        <a href="?page={{ products_list.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">next</a>
+                        <a href="?page={{ products_list.paginator.num_pages }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">last &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
+
+
+
+        </div>
+        <!-- /.row -->
+
+      </div>
+      <!-- /.col-lg-9 -->
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+{% endblock %}

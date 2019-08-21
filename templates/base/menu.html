@@ -1,0 +1,12 @@
+        <h1 class="my-4">Магазины</h1>
+        <div class="list-group">
+            {% for m in markets %}
+              <a href="{% url 'market' market_id=m.id %}" class="list-group-item"><img alt="{{ m.name }}" src="/media/{{ m.picture }}" width="25" height="25" /> {{ m.name }}</a>
+            {% endfor %}
+        </div>
+        <h1 class="my-4">Категории</h1>
+        <div class="list-group">
+            {% for r in rubrics %}
+              <a href="{% url 'rubric' rubric_id=r.id %}" class="list-group-item">{{ r.name }}</a>
+            {% endfor %}
+        </div>

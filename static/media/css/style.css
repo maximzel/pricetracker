@@ -1,0 +1,55 @@
+.card-img-top {
+    max-height: 130px;
+    width: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 15px;
+    bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card_item_text {
+    display: block;
+    position: relative;
+}
+
+.no-available-container {
+    position:relative;
+}
+
+.no-available-picture {
+    max-height: 130px;
+    width: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 15px;
+    bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.item-buttons {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 999;
+}
+
+.item-buttons button {
+    display: block;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+}
+
+.item-buttons button:last-child {
+    margin-top: 5px !important;
+}
+
+.img_in_button {
+    width: 25px;
+    height: 25px;
+}
