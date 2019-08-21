@@ -128,5 +128,4 @@ static/media/product/
 static/media/market/
 base/dumps/
 .idea/
-pricetracker/settings.py
 celerybeat.pid
