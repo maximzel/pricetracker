@@ -1,6 +1,6 @@
 simplejson==3.13.2
 celery==4.3.0
-Django==2.2.4
+Django==2.2.24
 fake-useragent==0.1.11
 urllib3==1.24.1
 requests==2.21.0
